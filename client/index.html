@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--<link rel='stylesheet' href='client/style.css'>-->
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Pronote</title>
+</head>
+<body>
+        <div class='page home'>
+            <img src='logo-pronote-menu.png' class='logo'>
+
+            <center>
+                <div class='head'>
+                    <h1>Title</h1>
+                    <h2>Subtitle</h2>
+                </div>
+
+                <div class='pages'>
+                    <button name='overall'>Overall</button>
+                    <button name='graph'>Evolution</button>
+                    <button name='array'>Grades</button>
+                </div>
+            </center>
+        </div>
+
+        <div class="page overall">
+            <p id="avg">Average: --/20</p>
+            <p id="cavg">Class average: --/20</p>
+
+            <div class='subjects'></div>
+        </div>
+        
+        <div class="page graph">
+            <center class="types"></center>
+
+            <div class="gcontent" id="gcontent"></div>
+        </div>
+
+        <table class='page array'></table>
+
+    <script src='app.js'></script>
+</body>
+</html>

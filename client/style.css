@@ -1,0 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+    word-spacing: 3px;
+    letter-spacing: 3px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.logo {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+
+    width: 60px;
+    box-shadow: 10px 10px 10px #202634;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: #8ba3bf;
+    left: 0;
+}
+
+.home {
+    top: 0;
+    
+    background-color: #8ba3bf;
+    background-image: url('background.jpg');
+    background-position: center;
+    background-size: calc(250vh);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overall {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .head {
+    border: 1px solid #fff;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.home .pages {
+    margin-top: 60px;
+}
+
+.home .pages button {
+    padding: 8px;
+    margin: 5px;
+    background-color: transparent;
+    border: none;
+    border-left: 2px solid #202634;
+    transition: background-color .3s;
+}
+
+.home .pages button:hover {
+    background-color: #202634;
+}
+
+.array {
+    top: 300vh;
+    background-color: #8ba3bf;
+}
+
+.overall {
+    top: 100vh;
+}
+
+.graph {
+    top: 200vh;
+}
+
+.graph .types {
+    position: absolute;
+    bottom: 30px;
+    width: 100vw;
+    height: 10vh;
+}
+
+.graph .types button {
+    padding: 10px;
+    margin: 5px;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #202634;
+    color: #202634;
+
+    transition: all ease-in-out .3s;
+}
+
+.graph .types button:hover {
+    background-color: #202634;
+    color: #fff;
+}
+
+.graph .gcontent {
+    height: calc(90vh - 35px);
+}
+
+#gcontent * {
+    background-color: transparent;
+}
+
+.subspan {
+    color: red;
+}
+
+.avgspan {
+    color: green;
+}
