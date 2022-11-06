@@ -23,6 +23,14 @@ function get_grade(grade) {
     return val
 }
 
+function get_class_grade(grade) {
+    // Get the grade of an object and calculate its value out of 20
+
+    val = (grade.average * 20) / grade.out_of
+    grade.coefficient *= (grade.out_of / 20)
+    return val
+}
+
 function switch_page(page, animate = true) {
     // Smooth scrolling to a page
 
@@ -37,6 +45,12 @@ function plot() {
     // Plots grades to the graph
 
     subject = graph_cat
+
+    mode = 'lines+markers'
+
+    // If mode is overall, don't draw the lines
+    // because it would be a mess for some reason
+    if (subject == 'Overall') {mode = 'markers'}
 
     grades = GRADES[subject]
 
@@ -65,7 +79,7 @@ function plot() {
     let data = [{
         x: arrx,
         y: arry,
-        mode: "lines+markers",
+        mode: mode,
         marker: {size: 16, color:'#202634'},
         type: "scatter",
         text: cap,
@@ -112,6 +126,9 @@ fetch("grades.json").then((res) => res.json()).then((data) => {
     GRADES = data
     GRADES['Overall'] = []
 
+    let g_avg = 0
+    let g_avg_class = 0
+
     // Load grades array
     for (let [subject, grades] of Object.entries(data)) {
 
@@ -154,15 +171,31 @@ fetch("grades.json").then((res) => res.json()).then((data) => {
 
     // Calculate the average in each subject
     Object.keys(GRADES).forEach((subject) => {
+
+        // Student
         sum = 0
         div = 0
+
+        // Class
+        csum = 0
+        cdiv = 0
         
         for (let grade of GRADES[subject]) {
             sum += get_grade(grade) * grade.coefficient
+            csum += get_class_grade(grade) * grade.coefficient
+
             div += grade.coefficient
+            cdiv += grade.coefficient
         }
 
-        AVERAGE[subject] = (sum / div).toPrecision(3)
+        // Divide sum of grades with sum of coefs.
+        avg = (sum / div).toPrecision(3)
+
+        // Add to global average (TODO: subject ponderations)
+        g_avg += avg
+        g_avg_class += (csum / cdiv).toPrecision(3)
+
+        AVERAGE[subject] = avg
     })
 
     // Add a section with all grades
@@ -176,11 +209,11 @@ fetch("grades.json").then((res) => res.json()).then((data) => {
         p.innerHTML = `<span class='subspan'>${subject}:</span> ${avg}`
         document.querySelector('.overall .subjects').append(p)
     }
-    
-    o = document.querySelectorAll('.overall *')
-    o[0].innerHTML = `<span class='avgspan'>Average:</span> ${NaN}`
-    o[1].innerHTML = `<span class='avgspan'>Class average:</span> ${NaN}`
 
+    // Display global averages
+    o = document.querySelectorAll('.overall *')
+    o[0].innerHTML = `<span class='avgspan'>Average:</span> ${g_avg}`
+    o[1].innerHTML = `<span class='avgspan'>Class average:</span> ${g_avg_class}`
 
     // Display graph for the first time
     plot(graph_cat)
