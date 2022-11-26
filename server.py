@@ -21,7 +21,7 @@ class Server(BaseHTTPRequestHandler):
             if split_path[1] in mimes.keys():
                 
                 # Get path and mimetype
-                path = 'client/' + self.path.replace('/', '')
+                path = f'{os.getcwd()}/client/' + self.path.replace('/', '')
                 mimetype = mimes[split_path[1]]
                 
                 # Open the file

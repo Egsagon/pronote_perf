@@ -1,10 +1,17 @@
+:root {
+    --main: #8dc8aa;
+    --sec: #448162;
+    --bg: #1c3e2f;
+    --fg: #fff;
+}
+
 * {
     padding: 0;
     margin: 0;
     word-spacing: 3px;
     letter-spacing: 3px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #fff;
+    color: var(--fg);
 }
 
 body {
@@ -17,21 +24,21 @@ body {
     top: 10px;
 
     width: 60px;
-    box-shadow: 10px 10px 10px #202634;
+    box-shadow: 10px 10px 10px var(--bg);
 }
 
 .page {
     width: 100vw;
     height: 100vh;
     position: absolute;
-    background-color: #8ba3bf;
+    background-color: var(--main);
     left: 0;
 }
 
 .home {
     top: 0;
     
-    background-color: #8ba3bf;
+    background-color: var(--main);
     background-image: url('background.jpg');
     background-position: center;
     background-size: calc(250vh);
@@ -48,7 +55,7 @@ body {
 }
 
 .home .head {
-    border: 1px solid #fff;
+    border: 1px solid var(--main);
     border-radius: 6px;
     padding: 20px;
 }
@@ -62,17 +69,17 @@ body {
     margin: 5px;
     background-color: transparent;
     border: none;
-    border-left: 2px solid #202634;
+    border-left: 2px solid var(--bg);
     transition: background-color .3s;
 }
 
 .home .pages button:hover {
-    background-color: #202634;
+    background-color: var(--bg);
 }
 
 .array {
     top: 300vh;
-    background-color: #8ba3bf;
+    background-color: var(--main);
 }
 
 .overall {
@@ -96,15 +103,15 @@ body {
 
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #202634;
-    color: #202634;
+    border-bottom: 1px solid var(--bg);
+    color: var(--bg);
 
     transition: all ease-in-out .3s;
 }
 
 .graph .types button:hover {
-    background-color: #202634;
-    color: #fff;
+    background-color: var(--bg);
+    color: var(--fg);
 }
 
 .graph .gcontent {

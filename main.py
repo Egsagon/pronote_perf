@@ -1,4 +1,4 @@
-import os, time, json, server, threading, webbrowser
+import os, json, server, threading, webbrowser
 
 path = os.getcwd()
 
@@ -7,7 +7,7 @@ pronotepy = ile_de_france = None
 exec('import pronotepy\nfrom pronotepy.ent import ile_de_france')
 
 # Init client
-url, usr, pwd = json.load(open('creds.json', 'r')).values()
+url, usr, pwd = json.load(open(f'{path}\\creds.json', 'r')).values()
 client = pronotepy.Client(url, username = usr, password = pwd, ent = ile_de_france)
 
 if not client.logged_in: exit('Failed to connect to ENT')
@@ -52,7 +52,7 @@ for grade in client.current_period.grades:
     else: subjects[sub] += [inf]
 
 # Write to data
-open('client/grades.json', 'w').write(json.dumps(subjects))
+open(f'{path}\\client\\grades.json', 'w').write(json.dumps(subjects))
 
 # Open in browser
 threading.Thread(target = server.serve).start()
